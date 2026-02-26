@@ -108,7 +108,9 @@ app.post('/api/appointments', async (req, res) => {
         // --- 6. Append Data to Google Sheets ---
         const rowData = [
             patientName,
-            parentName,
+            phone,
+            email,
+        
             place,
             appointmentDate,
             appointmentTime,
