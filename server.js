@@ -10,7 +10,7 @@ app.use(express.json());
 
 // --- 1. Email Transporter Setup ---
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    service: 'gmail', // Using 'service' is much more reliable than typing the host/port
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
@@ -36,7 +36,7 @@ app.post('/api/appointments', async (req, res) => {
     try {
         const { patientName, phone, email, place, appointmentDate, appointmentTime, selectedDoctor } = req.body;
         values: [
-            [patientName,phone, email, place, appointmentDate, appointmentTime, selectedDoctor]
+            [patientName, phone, email, place, appointmentDate, appointmentTime, selectedDoctor]
         ]
 
 
@@ -63,10 +63,10 @@ app.post('/api/appointments', async (req, res) => {
             // Loop through existing rows in the cloud
             for (let i = 1; i < rows.length; i++) { // Start at 1 to skip header
                 const rowPatient = rows[i][0]; // Column A
-                const rowParent = rows[i][1];  // Column B
+                // Column B
                 const rowSubmittedAt = new Date(rows[i][6]); // Column G
 
-                if (rowPatient === patientName && rowParent === parentName) {
+                if (rowPatient === patientName) {
                     if (rowSubmittedAt > twoDaysAgo) {
                         canBook = false;
                     }
@@ -110,7 +110,7 @@ app.post('/api/appointments', async (req, res) => {
             patientName,
             phone,
             email,
-        
+
             place,
             appointmentDate,
             appointmentTime,
