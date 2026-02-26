@@ -64,8 +64,10 @@ form.addEventListener("submit", async function(e) {
 
     try {
         // Pointing to your new local Node.js backend
-        const response = await fetch("http://localhost:5000/api/appointments", {
-            method: "POST",
+        // Make sure you keep the /api/appointments at the very end!
+const response = await fetch("https://hospital-backend-zv0l.onrender.com/api/appointments", {
+    method: "POST",
+    // ... the rest of your code stays exactly the same
             headers: {
                 "Content-Type": "application/json"
             },
