@@ -54,13 +54,14 @@ form.addEventListener("submit", async function (e) {
     // Convert form data to a clean JSON object
     const formData = new FormData(form);
     const data = {
-        patientName: formData.get("Patient_Name"),
-        parentName: formData.get("Parent_Name"),
-        place: formData.get("Place"),
-        appointmentDate: formData.get("Appointment_Date"),
-        appointmentTime: formData.get("Appointment_Time"),
-        selectedDoctor: formData.get("Selected_Doctor") || "General"
-    };
+    patientName: formData.get("Patient_Name"),
+    phone: formData.get("Phone_Number"), // <-- Added Phone
+    email: formData.get("Email_Address"), // <-- Added Email
+    place: formData.get("Place"),
+    appointmentDate: formData.get("Appointment_Date"),
+    appointmentTime: formData.get("Appointment_Time"),
+    selectedDoctor: formData.get("Selected_Doctor") || "General"
+};
 
     try {
         // Pointing to your new local Node.js backend

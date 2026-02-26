@@ -12,8 +12,8 @@ app.use(express.json());
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: process.env.EMAIL_USER, 
-        pass: process.env.EMAIL_PASS  
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
     }
 });
 
@@ -23,7 +23,7 @@ const auth = new google.auth.GoogleAuth({
     credentials: {
         client_email: process.env.GOOGLE_CLIENT_EMAIL,
         // The .replace() fixes how standard text editors handle newline characters
-        private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n') 
+        private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n')
     },
     scopes: ['https://www.googleapis.com/auth/spreadsheets']
 });
@@ -34,15 +34,16 @@ const SHEET_ID = process.env.SPREADSHEET_ID;
 // --- Route for Appointments ---
 app.post('/api/appointments', async (req, res) => {
     try {
-        const { patientName, parentName, place, appointmentDate, appointmentTime, selectedDoctor } = req.body;
+        const { patientName, phone, email, place, appointmentDate, appointmentTime, selectedDoctor } = req.body;
         values: [
-    [patientName, parentName, place, appointmentDate, appointmentTime, selectedDoctor]
-]
+            [patientName, parentName, phone, email, place, appointmentDate, appointmentTime, selectedDoctor]
+        ]
+
 
         const selectedDate = new Date(appointmentDate);
         const today = new Date();
-        today.setHours(0, 0, 0, 0); 
-        
+        today.setHours(0, 0, 0, 0);
+
         if (selectedDate < today) {
             return res.status(400).json({ error: 'You cannot book an appointment in the past.' });
         }
@@ -53,7 +54,7 @@ app.post('/api/appointments', async (req, res) => {
                 spreadsheetId: SHEET_ID,
                 range: 'Appointments!A:G' // Reads Columns A through G
             });
-            
+
             const rows = response.data.values || [];
             let canBook = true;
             const twoDaysAgo = new Date();
@@ -73,8 +74,8 @@ app.post('/api/appointments', async (req, res) => {
             }
 
             if (!canBook) {
-                return res.status(400).json({ 
-                    error: 'You have already booked an appointment recently. Please wait 2 days before booking another one.' 
+                return res.status(400).json({
+                    error: 'You have already booked an appointment recently. Please wait 2 days before booking another one.'
                 });
             }
         } catch (err) {
@@ -88,21 +89,30 @@ app.post('/api/appointments', async (req, res) => {
         // --- 5. Send Email Notification ---
         const mailOptions = {
             from: process.env.EMAIL_USER,
-            to: process.env.EMAIL_USER, 
-            subject: `🚨 New Appointment: ${patientName}`,
-            text: `A new appointment has been booked!\n\nPatient: ${patientName}\nParent: ${parentName}\nLocation: ${place}\nDoctor: ${selectedDoctor}\nDate: ${appointmentDate}\nTime: ${appointmentTime}\n\nCheck your Google Sheet for details.`
+            to: process.env.EMAIL_USER, // sends to yourself
+            subject: `New Appointment: ${patientName}`,
+            text: ` You have a new appointment!
+      
+            Patient: ${patientName}
+            Phone: ${phone}
+            Email: ${email}
+            Place: ${place}
+            Date: ${appointmentDate}
+            Time: ${appointmentTime}
+            Doctor: ${selectedDoctor}
+                                      `
         };
 
         transporter.sendMail(mailOptions).catch(err => console.error("Email failed:", err));
 
         // --- 6. Append Data to Google Sheets ---
         const rowData = [
-            patientName, 
-            parentName, 
-            place, 
-            appointmentDate, 
-            appointmentTime, 
-            selectedDoctor, 
+            patientName,
+            parentName,
+            place,
+            appointmentDate,
+            appointmentTime,
+            selectedDoctor,
             new Date().toISOString()
         ];
 
@@ -114,7 +124,7 @@ app.post('/api/appointments', async (req, res) => {
                 values: [rowData]
             }
         });
-        
+
         console.log(`✅ Success! Data successfully written to Google Sheets for ${patientName}.`);
 
     } catch (error) {
