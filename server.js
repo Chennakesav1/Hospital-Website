@@ -10,7 +10,9 @@ app.use(express.json());
 
 // --- 1. Email Transporter Setup ---
 const transporter = nodemailer.createTransport({
-    service: 'gmail', // Using 'service' is much more reliable than typing the host/port
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // This forces a secure connection that Render won't block
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
