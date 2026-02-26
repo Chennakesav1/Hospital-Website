@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="https://cdn-icons-png.flaticon.com/512/2966/2966327.png" alt="City Care Hospital Logo"
+                class="nav-logo-img">
+            Hospital
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="btn-appointment" onclick="openModal()">Book an Appointment</button>
+    </nav>
+
+    <div id="appointmentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Book an Appointment</h2>
+            <form id="appointmentForm">
+                <input type="text" id="patientName" name="Patient_Name" placeholder="Patient Name" required>
+                <input type="text" id="parentName" name="Parent_Name" placeholder="Father/Mother Name" required>
+                <input type="text" id="place" name="Place" placeholder="Place" required>
+                <input type="date" id="appDate" name="Appointment_Date" required>
+                <input type="time" id="appTime" name="Appointment_Time" required>
+                <button type="submit" class="btn-submit">Register</button>
+            </form>
+            <div id="successMessage" class="hidden">
+                <i class="fa-solid fa-circle-check"></i> Registration Successful! The owner has been notified via email.
+            </div>
+        </div>
+    </div>
+
+    <section id="home">
+        <div class="slider-container">
+            <div class="slide active"
+                style="background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1600&q=80');">
+            </div>
+            <div class="slide"
+                style="background-image: url('https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?w=1600&q=80');">
+            </div>
+            <div class="slide"
+                style="background-image: url('https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=1600&q=80');">
+            </div>
+        </div>
+
+        <div class="hospital-profile-container">
+            <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=400&q=80" alt="Hospital Profile"
+                class="profile-pic">
+            <div class="hospital-ads">
+                <h3>Voted #1 Healthcare Provider</h3>
+                <p>Bringing advanced care closer to you. State-of-the-art facilities and compassionate staff.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">Meet Our Experts</h2>
+        <div class="doctors-grid">
+            <div class="doctor-card">
+                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&q=80" alt="Dr. Smith">
+                <h3>Dr. Alan Smith</h3>
+                <p>Cardiologist</p>
+                <a href="doctor-details.html?doc=smith" class="btn-more">More About Doctor</a>
+            </div>
+            <div class="doctor-card">
+                <img src="images/OIP.jpg" alt="Dr. Jane">
+                <h3>Dr. Jane Doe</h3>
+                <p>Neurologist</p>
+                <a href="doctor-details.html?doc=jane" class="btn-more">More About Doctor</a>
+            </div>
+            <div class="doctor-card">
+                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=300&q=80" alt="Dr. Brown">
+                <h3>Dr. Sarah Brown</h3>
+                <p>Pediatrician</p>
+                <a href="doctor-details.html?doc=brown" class="btn-more">More About Doctor</a>
+            </div>
+            <div class="doctor-card">
+                <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=300&q=80" alt="Dr. Lee">
+                <h3>Dr. Michael Lee</h3>
+                <p>Orthopedic Surgeon</p>
+                <a href="doctor-details.html?doc=lee" class="btn-more">More About Doctor</a>
+            </div>
+            <div class="doctor-card">
+                <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=300&q=80" alt="Dr. Emily">
+                <h3>Dr. Emily White</h3>
+                <p>Dermatologist</p>
+                <a href="doctor-details.html?doc=white" class="btn-more">More About Doctor</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fa-solid fa-headset fa-3x"></i>
+                <h3>24/7 Support</h3>
+                <p>Round-the-clock medical assistance and helpline.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-truck-medical fa-3x"></i>
+                <h3>Ambulance Services</h3>
+                <p>Rapid response emergency transport available 24/7.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-flask fa-3x"></i>
+                <h3>Laboratory</h3>
+                <p>Advanced diagnostic and pathology testing.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-pills fa-3x"></i>
+                <h3>Pharmacy</h3>
+                <p>In-house pharmacy stocked with all essential medicines.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-heart-pulse fa-3x"></i>
+                <h3>Surgery Center</h3>
+                <p>State-of-the-art operating theaters for major surgeries.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-baby fa-3x"></i>
+                <h3>Maternity Care</h3>
+                <p>Comprehensive care for mothers and newborns.</p>
+            </div>
+        </div>
+
+        <div class="performance-section" id="performance">
+            <div class="counter-box">
+                <h3 class="counter" data-target="5000">0</h3>
+                <p>Happy Patients</p>
+            </div>
+            <div class="counter-box">
+                <h3 class="counter" data-target="150">0</h3>
+                <p>Expert Doctors</p>
+            </div>
+            <div class="counter-box">
+                <h3 class="counter" data-target="20">0</h3>
+                <p>Years Experience</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Reception & Inquiry</h3>
+                <p><strong>Name:</strong> Receponist Name</p>
+                <p><strong>Phone:</strong> +91 xxxxxxxxxx</p>
+                <p><strong>Email:</strong> reception@.com</p>
+
+                <form id="contactForm" class="contact-form">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
+                    <textarea name="Message" placeholder="Your Message" rows="4" required></textarea>
+                    <button type="submit" id="contactSubmitBtn">Send Message</button>
+                </form>
+
+                <div id="contactSuccess" class="hidden" style="margin-top: 15px; color: #28a745; font-weight: bold;">
+                    <i class="fa-solid fa-circle-check"></i> Message sent successfully! We will get back to you soon.
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.448729321692!2d78.35737787493598!3d17.438223883457653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9300601cefb5%3A0xa34658e071a5010!2sHospital!5e0!3m2!1sen!2sin!4v1772039365768!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                 
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+        <p>&copy; 2026 City Care Hospital. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    
+</body>
+
+</html>

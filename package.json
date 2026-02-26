@@ -1,0 +1,21 @@
+{
+  "name": "hospital",
+  "version": "1.0.0",
+  "main": "doctor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "exceljs": "^4.4.0",
+    "express": "^5.2.1",
+    "googleapis": "^171.4.0",
+    "mongoose": "^9.2.2",
+    "nodemailer": "^8.0.1"
+  }
+}

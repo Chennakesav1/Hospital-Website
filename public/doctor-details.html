@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Profile - City Care Hospital</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar">
+        <div class="logo">City Care Hospital</div>
+        <ul class="nav-links">
+            <li><a href="index.html"><i class="fa-solid fa-arrow-left"></i> Back to Home</a></li>
+        </ul>
+    </nav>
+
+   <section class="doctor-profile-section">
+        <div class="profile-container">
+            
+            <div class="profile-header">
+                <img id="docImage" src="" alt="Doctor Profile" class="profile-large-img">
+                <div class="profile-title">
+                    <h1 id="docName">Loading...</h1>
+                    <h3 id="docProfession" class="profession"></h3>
+                    <div id="docExperience" class="experience-badge"></div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="profile-description">
+                <h2 id="docAboutTitle">About</h2>
+                <p id="docDescription">Loading doctor details...</p>
+                
+                <div class="details-grid">
+                    <div class="detail-box">
+                        <i class="fa-solid fa-stethoscope"></i>
+                        <h4>Specialties</h4>
+                        <ul id="docSpecialties"></ul>
+                    </div>
+                    
+                    <div class="detail-box">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <h4>Education</h4>
+                        <ul id="docEducation"></ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    
+    <footer>
+        <p>© 2026 City Care Hospital. All Rights Reserved.</p>
+    </footer>
+
+</body>
+<script src="doctor.js"></script>
+</html>
