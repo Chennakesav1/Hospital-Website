@@ -36,7 +36,7 @@ app.post('/api/appointments', async (req, res) => {
     try {
         const { patientName, phone, email, place, appointmentDate, appointmentTime, selectedDoctor } = req.body;
         values: [
-            [patientName, parentName, phone, email, place, appointmentDate, appointmentTime, selectedDoctor]
+            [patientName,phone, email, place, appointmentDate, appointmentTime, selectedDoctor]
         ]
 
 
