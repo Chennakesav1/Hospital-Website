@@ -10,12 +10,12 @@ app.use(express.json());
 
 // --- 1. Email Transporter Setup ---
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true, // This forces a secure connection that Render won't block
+    host: 'smtp-relay.brevo.com',
+    port: 2525, 
+    secure: false, 
     auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
+        user: process.env.EMAIL_USER, // <-- EXACTLY LIKE THIS
+        pass: process.env.EMAIL_PASS  // <-- EXACTLY LIKE THIS
     }
 });
 
