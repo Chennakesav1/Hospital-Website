@@ -1,4 +1,6 @@
-/* General Reset */
+/* =========================================
+   General Reset & Body Styles
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -12,30 +14,9 @@ body {
     color: #333;
 }
 
-
-/* --- Logo Styles --- */
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px; /* Adds space between the image and the text */
-    font-size: 24px;
-    font-weight: bold;
-    color: #0056b3;
-    text-decoration: none; /* Removes the underline from the link */
-    transition: transform 0.3s ease;
-}
-
-.logo:hover {
-    transform: scale(1.02); /* Slight zoom effect when hovered */
-}
-
-.nav-logo-img {
-    height: 40px; /* Keeps the logo an appropriate size for a navbar */
-    width: auto;
-    object-fit: contain;
-}
-
-/* Navbar */
+/* =========================================
+   Navbar & Logo Styles
+   ========================================= */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -50,9 +31,24 @@ body {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     font-size: 24px;
     font-weight: bold;
     color: #0056b3;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.02);
+}
+
+.nav-logo-img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
 }
 
 .nav-links {
@@ -88,7 +84,9 @@ body {
     transform: scale(1.05);
 }
 
-/* Modal Styling */
+/* =========================================
+   Modal Styling
+   ========================================= */
 .modal {
     display: none;
     position: fixed;
@@ -153,7 +151,9 @@ body {
     font-weight: bold;
 }
 
-/* Home Section & Slider */
+/* =========================================
+   Home Section & Slider
+   ========================================= */
 #home {
     margin-top: 70px;
     position: relative;
@@ -208,7 +208,9 @@ body {
     color: #0056b3;
 }
 
-/* Sections General */
+/* =========================================
+   Sections General
+   ========================================= */
 section {
     padding: 60px 50px;
 }
@@ -220,7 +222,9 @@ section {
     color: #0056b3;
 }
 
-/* About / Doctors */
+/* =========================================
+   About / Doctors Grid
+   ========================================= */
 .doctors-grid {
     display: flex;
     justify-content: center;
@@ -264,10 +268,12 @@ section {
 
 .btn-more:hover {
     background-color: #004494;
-    transform: translateX(5px); /* Animation effect for opening next page */
+    transform: translateX(5px);
 }
 
-/* Services */
+/* =========================================
+   Services Section
+   ========================================= */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -293,7 +299,9 @@ section {
     margin-bottom: 15px;
 }
 
-/* Performance Animation */
+/* =========================================
+   Performance Animation Section
+   ========================================= */
 .performance-section {
     display: flex;
     justify-content: space-around;
@@ -308,7 +316,9 @@ section {
     font-size: 40px;
 }
 
-/* Contact Section */
+/* =========================================
+   Contact Section
+   ========================================= */
 .contact-container {
     display: flex;
     gap: 40px;
@@ -348,7 +358,9 @@ section {
     flex: 1;
 }
 
-/* Footer */
+/* =========================================
+   Footer
+   ========================================= */
 footer {
     background: #222;
     color: white;
@@ -373,16 +385,15 @@ footer {
     transform: translateY(-5px);
 }
 
-
-/*doctor details */
-
-/* --- Doctor Details Page Styles --- */
+/* =========================================
+   Doctor Details Page Styles
+   ========================================= */
 .bg-light {
     background-color: #f4f7fa;
 }
 
 .doctor-profile-section {
-    margin-top: 100px; /* Space for the fixed navbar */
+    margin-top: 100px; 
     padding: 40px 20px;
     display: flex;
     justify-content: center;
@@ -406,7 +417,7 @@ footer {
 .profile-large-img {
     width: 250px;
     height: 250px;
-    border-radius: 12px; /* Slightly square with rounded corners instead of a full circle */
+    border-radius: 12px;
     object-fit: cover;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
@@ -500,14 +511,125 @@ footer {
     left: 0;
 }
 
-/* Make it responsive for mobile phones */
+/* =========================================
+   Responsive Design (Tablet & Mobile Fixes)
+   ========================================= */
+
+/* --- Tablet View (max-width: 992px) --- */
+@media (max-width: 992px) {
+    section {
+        padding: 50px 30px;
+    }
+
+    .navbar {
+        padding: 15px 30px;
+    }
+
+    .hospital-profile-container {
+        padding: 30px 20px;
+        gap: 20px;
+    }
+
+    .contact-container {
+        gap: 20px;
+    }
+}
+
+/* --- Mobile View (max-width: 768px) --- */
 @media (max-width: 768px) {
-    .profile-header {
+    section {
+        padding: 40px 20px;
+    }
+
+    .section-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+        gap: 15px;
+        position: relative; 
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .modal-content {
+        width: 90%;
+        max-width: 400px;
+        margin: 20% auto;
+        padding: 20px;
+    }
+
+    .hospital-profile-container {
         flex-direction: column;
         text-align: center;
     }
-    
+
+    .performance-section {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .map-container iframe {
+        width: 100%;
+        height: 250px;
+    }
+
+    /* Mobile overrides for Doctor Details Page */
+    .doctor-profile-section {
+        margin-top: 20px;
+        padding: 20px 15px;
+    }
+
+    .profile-container {
+        padding: 20px;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .profile-large-img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .profile-title h1 {
+        font-size: 28px;
+    }
+
     .details-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* --- Small Mobile Phones (max-width: 480px) --- */
+@media (max-width: 480px) {
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .counter-box h3 {
+        font-size: 32px;
     }
 }
